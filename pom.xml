@@ -21,12 +21,6 @@
     </license>
   </licenses>
 
-  <scm>
-    <connection>scm:git:git@github.com/opentelekomcloud-community/otc-java-sdk-v1.git</connection>
-    <developerConnection>scm:git:git@github.com/opentelekomcloud-community/otc-java-sdk-v1.git</developerConnection>
-    <url>git@github.com/opentelekomcloud-community/otc-java-sdk-v1.git</url>
-  </scm>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
