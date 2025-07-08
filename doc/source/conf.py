@@ -241,7 +241,8 @@ release = pom_version
 
 # https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
 extlinks= {
-    "github_repo_master": (f'https://github.com/opentelekomcloud-community/otc-java-sdk-v1/tree/{local_branch}/%s', "%s")
+    "github_repo_master": (f'https://github.com/opentelekomcloud-community/otc-java-sdk-v1/tree/{local_branch}/%s', "%s"),
+    "api_usage": ('https://docs.otc.t-systems.com/api-usage/%s', "%s")
 }
 
 role_name = 'github_repo_master'

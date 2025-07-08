@@ -17,6 +17,7 @@ package com.otc.sdk.samples.services.fg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.otc.sdk.core.http.HttpMethodName;
 import com.otc.sdk.core.util.Constant;
 import com.otc.sdk.core.util.HostName;
 import com.otc.sdk.core.util.SSLCipherSuiteUtil;
@@ -42,7 +43,7 @@ public class OkHttpListFG {
       String projectId = System.getenv("OTC_SDK_PROJECTID");
       OkHttpRequest.setKey(ak);
       OkHttpRequest.setSecret(sk);
-      OkHttpRequest.setMethod("GET");
+      OkHttpRequest.setMethod(HttpMethodName.GET.toString());
 
       String url = String.format("https://functiongraph.eu-de.otc.t-systems.com/v2/%s/fgs/functions", projectId);
       OkHttpRequest.setUrl(url);

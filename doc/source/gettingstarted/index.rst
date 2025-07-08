@@ -5,29 +5,98 @@ Getting started with the OTC Java SDK v1
    :maxdepth: 3
 
 
-To run samples following environment variables have to be set:
+Installing libraries
+^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Environment variables
-    :widths: 20 20 25
-    :header-rows: 1
+These libraries are available through:
 
-    * - Name
-      - Value
-      - Remark
+.. tabs::
 
-    * - OTC_SDK_AK
-      - Access key
-      - see: `Generating an AK and SK <https://docs.otc.t-systems.com/api-usage/guidelines/calling_apis/ak_sk_authentication/generating_an_ak_and_sk.html>`_
+  .. tab:: Source
 
-    * - OTC_SDK_SK
-      - Secret key
-      - see: `Generating an AK and SK <https://docs.otc.t-systems.com/api-usage/guidelines/calling_apis/ak_sk_authentication/generating_an_ak_and_sk.html>`_
+     Install libraries to local .m2 repository
 
-    * - OTC_SDK_PROJECTID
-      - Project Id
-      -
+     .. code-block:: shell
+        :substitutions:
 
-    * - OTC_IAM_ENDPOINT
-      - https://iam.eu-de.otc.t-systems.com
-      - IAM Endpoint
+        # Check out the repository with tag v|pom_version|
+        git clone --branch v|pom_version| --single-branch |github_repo|
 
+        # change to folder
+        cd otc-java-sdk-v1
+
+        # run maven clean install
+        mvn clean install
+
+  .. tab:: GitHub and Maven
+
+    To use GitHub maven repository modify your ``settings.xml`` (e.g. ~/.m2/settings.xml) as follows.
+
+    If you need to use a proxy for internet connections, see `Configuring a proxy <https://maven.apache.org/guides/mini/guide-proxies.html>`_.
+
+    The environment variable ``GITHUB_TOKEN`` has to be set with your `GitHub personal access token <https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-with-a-personal-access-token>`_,
+    e.g. in your ``~/.profile``.
+
+     Detailed instructions can be found `Working with the Apache Maven registry: Installing a package <https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package>`_
+
+     .. code-block:: xml
+        :caption: settings.xml
+
+        <servers>
+          <server>
+            <id>github.opentelekomcloud-community</id>
+            <configuration>
+              <httpHeaders>
+                <property>
+                  <name>Authorization</name>
+                  <value>Bearer ${env.GITHUB_TOKEN}</value>
+                </property>
+              </httpHeaders>
+            </configuration>
+        </servers>
+
+        <profiles>
+          <profile>
+            <id>default</id>
+
+            <repositories>
+              <repository>
+                <id>central</id>
+                <url>https://repo1.maven.org/maven2</url>
+              </repository>
+
+              <repository>
+                <id>github.opentelekomcloud-community</id>
+                <url>https://maven.pkg.github.com/opentelekomcloud-community/otc-java-sdk-v1</url>
+
+                <releases>
+                  <enabled>true</enabled>
+                  <updatePolicy>daily</updatePolicy>
+                </releases>
+
+                <snapshots>
+                  <enabled>true</enabled>
+                  <updatePolicy>always</updatePolicy>
+                </snapshots>
+
+              </repository>
+            </repositories>
+          </profile>
+        </profiles>
+
+        <activeProfiles>
+          <activeProfile>default</activeProfile>
+        </activeProfiles>
+
+
+  .. tab:: Maven Central
+
+     Comming soon ...
+
+
+API Usage
+^^^^^^^^^
+
+For API usage, see :api_usage:`API Usage guidelines <guidelines/>`.
+
+For available REST APIs, see `REST API <https://docs.otc.t-systems.com/developer/api.html>`_ in Open Telekom Cloud Documentation.

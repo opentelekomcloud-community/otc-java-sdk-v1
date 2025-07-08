@@ -1,18 +1,3 @@
-<!--
-  ~ Copyright (c) 2025 T-Systems International GmbH.
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~      http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -24,40 +9,34 @@
     <version>1.0.0</version>
   </parent>
 
-  <groupId>com.otc.sdk</groupId>
   <artifactId>otc-sdk-v1-core</artifactId>
 
+  <name>OTC SDK for Java Core</name>
+  <description>Core library for OTC Java SDK</description>
+
+  <packaging>jar</packaging>
+
   <properties>
-     <maven.compiler.release>17</maven.compiler.release>
 
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- <bgmprovider.version>1.0.4</bgmprovider.version> -->
+    <bgmprovider.version>2.0.0</bgmprovider.version>
 
-    <junit.version>5.10.1</junit.version>
-    <checkstyle.version>8.45.1</checkstyle.version>
+    <!-- <commons-codec.version>1.16.0</commons-codec.version> -->
+    <commons-codec.version>1.18.0</commons-codec.version>
 
-    <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
-    <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-    <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-
-    <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
-
-    <slf4j.version>1.7.36</slf4j.version>
-    <slf4j-api.version>2.0.16</slf4j-api.version>
-
-    <bgmprovider.version>1.0.4</bgmprovider.version>
-
-    <commons-codec.version>1.16.0</commons-codec.version>
-    <commons-logging.version>1.2</commons-logging.version>
+    <!-- <commons-logging.version>1.2</commons-logging.version> -->
+    <commons-logging.version>1.3.5</commons-logging.version>
 
     <httpclient.version>4.5.14</httpclient.version>
-    <httpcore.version>4.4.13</httpcore.version>
+
+    <!-- <httpcore.version>4.4.13</httpcore.version> -->
+    <httpcore.version>4.4.16</httpcore.version>
 
     <okhttp.version>4.11.0</okhttp.version>
-    <okio.version>3.5.0</okio.version>
 
-    <jaxb-api.version>2.1</jaxb-api.version>
-    <joda-time.version>2.7</joda-time.version>
-    <jackson-databind.version>2.2.3</jackson-databind.version>
+    <!-- <okio.version>3.5.0</okio.version> -->
+     <okio.version>3.15.0</okio.version>
+
   </properties>
 
   <dependencies>
@@ -65,7 +44,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${slf4j-api.version}</version>
+      <version>${slf4j.version}</version>
       <scope>compile</scope>
     </dependency>
 
@@ -74,7 +53,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>${slf4j-api.version}</version>
+      <version>${slf4j.version}</version>
     </dependency> 
     -->
 
@@ -152,27 +131,6 @@
       <version>${httpcore.version}</version>
     </dependency>
 
-    <!-- <dependency>
-      <groupId>javax.xml.bind</groupId>
-      <artifactId>jaxb-api</artifactId>
-      <version>${jaxb-api.version}</version>
-    </dependency>
-     -->
-    <!-- 
-    <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>${joda-time.version}</version>
-      <scope>compile</scope>
-    </dependency> -->
-
-    <!-- <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson-databind.version}</version>
-      <scope>compile</scope>
-    </dependency> -->
-
   </dependencies>
 
   <build>
@@ -198,8 +156,9 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
-  </build> 
+  </build>
 
   <reporting>
     <plugins>
@@ -210,4 +169,5 @@
       </plugin>
     </plugins>
   </reporting>
+
 </project>

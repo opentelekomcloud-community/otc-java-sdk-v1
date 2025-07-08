@@ -26,6 +26,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.otc.sdk.core.http.HttpMethodName;
 import com.otc.sdk.core.util.Constant;
 import com.otc.sdk.core.util.HostName;
 import com.otc.sdk.core.util.SSLCipherSuiteUtil;
@@ -47,7 +48,7 @@ public class HttpClientListFG {
 
       httpClientRequest.setKey(ak);
       httpClientRequest.setSecret(sk);
-      httpClientRequest.setMethod("GET");
+      httpClientRequest.setMethod(HttpMethodName.GET.toString());
 
       String url = String.format("https://functiongraph.eu-de.otc.t-systems.com/v2/%s/fgs/functions", projectId);
 
