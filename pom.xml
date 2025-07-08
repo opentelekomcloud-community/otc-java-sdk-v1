@@ -21,6 +21,13 @@
     </license>
   </licenses>
 
+  <scm>
+    <connection>scm:git:${project.scm.url}</connection>
+    <developerConnection>scm:git:g${project.scm.url}</developerConnection>
+    <url>git@github.com/opentelekomcloud-community/otc-java-sdk-v1.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
@@ -31,7 +38,7 @@
     <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
     <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
     <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
-    <maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
+    <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
     <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
     <maven-project-info-reports-plugin.version>3.6.1</maven-project-info-reports-plugin.version>
 
@@ -79,10 +86,6 @@
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>${maven-deploy-plugin.version}</version>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-          <inherited>false</inherited>
         </plugin>
         <!-- site lifecycle, see
         https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
