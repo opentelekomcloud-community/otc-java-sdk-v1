@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.otc.sdk</groupId>
+    <groupId>io.github.opentelekomcloud-community</groupId>
     <artifactId>otc-sdk-v1</artifactId>
     <version>1.0.0</version>
   </parent>
