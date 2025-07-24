@@ -14,6 +14,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * OkHttpDemo class demonstrates how to use the OTC SDK to make HTTP requests
+ * with authentication using OkHttp.
+ * It shows how to create a request, sign it, and execute it using OkHttpClient.
+ * The response body is printed to the console.
+ */
 public class OkHttpDemo {
   private static final Logger LOGGER = LoggerFactory.getLogger(OkHttpDemo.class);
 

@@ -15,12 +15,17 @@
 
 package com.otc.sdk.core.http;
 
+/**
+ * Enum representing the HTTP method names used in requests.
+ * This enum includes common HTTP methods such as GET, POST, PUT, DELETE, HEAD,
+ * PATCH, and OPTIONS.
+ */
 public enum HttpMethodName {
-   GET,
-   POST,
-   PUT,
-   DELETE,
-   HEAD,
-   PATCH,
-   OPTIONS;
+  GET,
+  POST,
+  PUT,
+  DELETE,
+  HEAD,
+  PATCH,
+  OPTIONS;
 }

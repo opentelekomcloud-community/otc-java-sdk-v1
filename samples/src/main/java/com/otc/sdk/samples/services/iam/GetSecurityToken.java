@@ -32,6 +32,11 @@ import com.otc.sdk.core.util.SSLCipherSuiteUtil;
 import com.otc.sdk.samples.services.fg.HttpClientListFG;
 import com.otc.sdk.service.Client;
 
+/**
+ * GetSecurityToken class demonstrates how to obtain a security token using the OTC SDK.
+ * It shows how to create a request, sign it, and execute it using an HTTP client.
+ * The security access key, secret key, and security token are printed to the console.
+ */
 public class GetSecurityToken {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientListFG.class);

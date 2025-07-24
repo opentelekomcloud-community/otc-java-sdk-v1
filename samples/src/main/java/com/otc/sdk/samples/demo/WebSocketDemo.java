@@ -15,6 +15,13 @@ import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 
+/**
+ * WebSocketDemo class demonstrates how to use the OTC SDK to make WebSocket
+ * requests with authentication.
+ * It shows how to create a request, sign it, and execute it using OkHttpClient
+ * for WebSocket communication.
+ * The response messages are printed to the console.
+ */
 public class WebSocketDemo {
   private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketDemo.class);
 

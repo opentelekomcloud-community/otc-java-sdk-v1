@@ -15,29 +15,59 @@
 
 package com.otc.sdk.service;
 
+/**
+ * Exception thrown when an unknown HTTP method is encountered.
+ * This exception extends RuntimeException and can be used to indicate that
+ * the specified HTTP method is not recognized or supported.
+ */
 public class UnknownHttpMethodException extends RuntimeException {
-   private static final long serialVersionUID = 4L;
-   private String retCd;
-   private String msgDes;
+  private static final long serialVersionUID = 4L;
+  private String retCd;
+  private String msgDes;
 
-   public UnknownHttpMethodException() {
-   }
+  /**
+   * Default constructor for UnknownHttpMethodException.
+   * Initializes the exception without a specific message.
+   */
+  public UnknownHttpMethodException() {
+  }
 
-   public UnknownHttpMethodException(String message) {
-      super(message);
-      this.msgDes = message;
-   }
+  /**
+   * Constructor for UnknownHttpMethodException with a specific message.
+   *
+   * @param message The detail message for the exception
+   */
+  public UnknownHttpMethodException(String message) {
+    super(message);
+    this.msgDes = message;
+  }
 
-   public UnknownHttpMethodException(String retCd, String msgDes) {
-      this.retCd = retCd;
-      this.msgDes = msgDes;
-   }
+  /**
+   * Constructor for UnknownHttpMethodException with return code and message.
+   *
+   * @param retCd  Return code indicating the error type
+   * @param msgDes Detailed message describing the error
+   */
+  public UnknownHttpMethodException(String retCd, String msgDes) {
+    this.retCd = retCd;
+    this.msgDes = msgDes;
+  }
 
-   public String getRetCd() {
-      return this.retCd;
-   }
+  /**
+   * Gets the return code associated with the exception.
+   *
+   * @return The return code
+   */
+  public String getRetCd() {
+    return this.retCd;
+  }
 
-   public String getMsgDes() {
-      return this.msgDes;
-   }
+  /**
+   * Gets the detailed message associated with the exception.
+   *
+   * @return The detailed message
+   */
+  public String getMsgDes() {
+    return this.msgDes;
+  }
 }

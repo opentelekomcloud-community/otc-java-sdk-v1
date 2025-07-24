@@ -15,6 +15,11 @@
 
 package com.otc.sdk.core.util;
 
+/**
+ * Constant class that holds various constants used throughout the SDK.
+ * It includes settings for SSL verification, protocol names, signature algorithms,
+ * cipher suites, and secure random algorithms.
+ */
 public final class Constant {
   // verify ssl certificate (true) or do not verify (false)
   public static final boolean DO_VERIFY = false;

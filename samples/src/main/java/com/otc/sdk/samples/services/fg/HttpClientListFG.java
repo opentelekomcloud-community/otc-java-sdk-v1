@@ -33,6 +33,12 @@ import com.otc.sdk.core.util.SSLCipherSuiteUtil;
 import com.otc.sdk.service.Client;
 import com.otc.sdk.service.Request;
 
+/**
+ * HttpClientListFG class demonstrates how to list Function Graph functions using
+ * the OTC SDK.
+ * It shows how to create a request, sign it, and execute it using an HTTP client.
+ * The response body is printed to the console.
+ */
 public class HttpClientListFG {
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientListFG.class);
 

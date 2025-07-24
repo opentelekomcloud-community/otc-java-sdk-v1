@@ -15,14 +15,28 @@
 
 package com.otc.sdk.core.util;
 
+/**
+ * HostName utility class to manage and validate host names.
+ * It provides methods to set a URL host name and check if a given SSL host name
+ * matches the set URL host name.
+ */
 public class HostName {
-    private static String urlHostName;
+  private static String urlHostName;
 
-    public static void setUrlHostName(String hostName) {
-        urlHostName = hostName;
-    }
+  /**
+   * Sets the URL host name.
+   */
+  public static void setUrlHostName(String hostName) {
+    urlHostName = hostName;
+  }
 
-    public static boolean checkHostName(String SSLHostName) {
-        return urlHostName.equals(SSLHostName);
-    }
+  /**
+   * Checks if the provided SSL host name matches the set URL host name.
+   *
+   * @param SSLHostName The SSL host name to check
+   * @return true if the SSL host name matches the URL host name, false otherwise
+   */
+  public static boolean checkHostName(String SSLHostName) {
+    return urlHostName.equals(SSLHostName);
+  }
 }

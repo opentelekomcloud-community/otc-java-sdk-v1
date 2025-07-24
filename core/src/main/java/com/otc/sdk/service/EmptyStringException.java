@@ -15,16 +15,39 @@
 
 package com.otc.sdk.service;
 
+/**
+ * Exception thrown when an empty string is encountered where it is not allowed.
+ * This exception extends RuntimeException and can be used to indicate that a
+ * required string parameter is empty.
+ */
 public class EmptyStringException extends RuntimeException {
-   private static final long serialVersionUID = 4312820110480855928L;
-   private String retCd;
-   private String msgDes;
+  private static final long serialVersionUID = 4312820110480855928L;
+  private String retCd;
+  private String msgDes;
 
-   public EmptyStringException() {
-   }
+  /**
+   * Default constructor for EmptyStringException.
+   * Initializes the exception without a specific message.
+   */
+  public EmptyStringException() {
+  }
 
-   public EmptyStringException(String message) {
-      super(message);
-      this.msgDes = message;
-   }
+  /**
+   * Constructor for EmptyStringException with a specific message.
+   *
+   * @param message The detail message for the exception
+   */
+  public EmptyStringException(String message) {
+    super(message);
+    this.msgDes = message;
+  }
+
+  /**
+   * Gets the detailed message associated with the exception.
+   *
+   * @return The detailed message
+   */
+  public String getMsgDes() {
+    return this.msgDes;
+  }
 }

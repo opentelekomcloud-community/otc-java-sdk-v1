@@ -26,6 +26,11 @@ import com.otc.sdk.core.util.SSLCipherSuiteUtil;
 import com.otc.sdk.core.util.SignUtils;
 import com.otc.sdk.service.Request;
 
+/**
+ * LargeFileUploadDemo class demonstrates how to upload a large file using the OTC SDK.
+ * It shows how to create a request, sign it, and send the file content in a POST request.
+ * The response body is printed to the console.
+ */
 public class LargeFileUploadDemo {
   private static final Logger LOGGER = LoggerFactory.getLogger(LargeFileUploadDemo.class);
   private static final String UTF8 = "UTF-8";
@@ -61,6 +66,12 @@ public class LargeFileUploadDemo {
     sendPostStream(fname, fileUploadRequest);
   }
 
+  /**
+   * Sends a POST request with the file content as a stream.
+   *
+   * @param fname   The name of the file to be uploaded
+   * @param request The request object containing the necessary parameters
+   */
   private static void sendPostStream(String fname, Request request) {
     HttpURLConnection conn = null;
     OutputStream outputStream = null;
@@ -108,6 +119,15 @@ public class LargeFileUploadDemo {
     }
   }
 
+  /**
+   * Initializes the connection and sends the file content.
+   *
+   * @param request The request object containing the necessary parameters
+   * @param conn    The HttpURLConnection object to be initialized
+   * @param fname   The name of the file to be uploaded
+   * @return The initialized HttpURLConnection object
+   * @throws Exception if an error occurs during connection initialization or file reading
+   */
   private static HttpURLConnection initConnAndSendContent(Request request, HttpURLConnection conn, String fname)
       throws Exception {
     // Sign the request.
@@ -138,6 +158,13 @@ public class LargeFileUploadDemo {
     return conn;
   }
 
+  /**
+   * Reads the content of a file and writes it to the provided OutputStream.
+   *
+   * @param filePath The path to the file to read
+   * @param out      The OutputStream to write the file content to
+   * @throws IOException if an error occurs while reading the file or writing to the OutputStream
+   */
   public static void setFileConent(String filePath, OutputStream out) throws IOException {
     File file = new File(filePath);
     int count = 0;
@@ -150,6 +177,13 @@ public class LargeFileUploadDemo {
     }
   }
 
+  /**
+   * Calculate the SHA-256 hash of a file and return it as a hexadecimal string.
+   *
+   * @param fileName The name of the file to hash
+   * @return The SHA-256 hash of the file as a hexadecimal string
+   * @throws Exception if an error occurs during hashing
+   */
   private static String calcSha256Hex(String fileName) throws Exception {
     byte[] buffer = new byte[8192];
     int count;

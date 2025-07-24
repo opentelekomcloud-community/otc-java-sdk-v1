@@ -15,6 +15,10 @@
 
 package com.otc.sdk.core.auth.signer;
 
+/**
+ * Enum representing the signing algorithms used in the SDK.
+ * This enum includes HmacSHA256 and HmacSM3 as supported signing algorithms.
+ */
 public enum SigningAlgorithm {
    HmacSHA256,
    HmacSM3;

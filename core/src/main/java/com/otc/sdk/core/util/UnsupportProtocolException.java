@@ -15,12 +15,30 @@
 
 package com.otc.sdk.core.util;
 
+/**
+ * Exception thrown when an unsupported protocol is encountered.
+ * This exception extends Exception and can be used to indicate that
+ * the specified protocol is not recognized or supported.
+ */
 public class UnsupportProtocolException extends Exception {
-    private static final long serialVersionUID = 4312820110480855928L;
-    private String msgDes; 
+  private static final long serialVersionUID = 4312820110480855928L;
+  private String msgDes;
 
-    public UnsupportProtocolException(String message) {
-        super(message);
-        msgDes = message;
-    }
+  /**
+   * Gets the detailed message associated with the exception.
+   *
+   * @return The detailed message
+   */
+  public String getMsgDes() {
+    return msgDes;
+  }
+
+  /**
+   * Default constructor for UnsupportProtocolException.
+   * Initializes the exception without a specific message.
+   */
+  public UnsupportProtocolException(String message) {
+    super(message);
+    msgDes = message;
+  }
 }

@@ -21,51 +21,143 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 import com.otc.sdk.core.http.HttpMethodName;
 
+/**
+ * Abstract class for access services that handle HTTP requests with
+ * authentication.
+ * It provides methods to access resources with different parameters and
+ * configurations.
+ */
 public abstract class AccessService {
-   protected String ak;
-   protected String sk;
-   protected String messageDigestAlgorithm = "SDK-HMAC-SHA256";
+  protected String ak;
+  protected String sk;
+  protected String messageDigestAlgorithm = "SDK-HMAC-SHA256";
 
-   public AccessService(String ak, String sk) {
-      this.ak = ak;
-      this.sk = sk;
-   }
+  /**
+   * Constructor to initialize the AccessService with access key and secret key.
+   *
+   * @param ak Access Key
+   * @param sk Secret Key
+   */
+  public AccessService(String ak, String sk) {
+    this.ak = ak;
+    this.sk = sk;
+  }
 
-   public AccessService(String ak, String sk, String messageDigestAlgorithm) {
-      this.ak = ak;
-      this.sk = sk;
-      this.messageDigestAlgorithm = messageDigestAlgorithm;
-   }
+  /**
+   * Constructor to initialize the AccessService with access key, secret key, and
+   * message digest algorithm.
+   *
+   * @param ak                     Access Key
+   * @param sk                     Secret Key
+   * @param messageDigestAlgorithm Message Digest Algorithm (default is
+   *                               "SDK-HMAC-SHA256")
+   */
+  public AccessService(String ak, String sk, String messageDigestAlgorithm) {
+    this.ak = ak;
+    this.sk = sk;
+    this.messageDigestAlgorithm = messageDigestAlgorithm;
+  }
 
-   public abstract HttpRequestBase access(String var1, Map<String, String> var2, InputStream var3, Long var4, HttpMethodName var5) throws Exception;
+  /**
+   * Abstract method to access a resource with the specified parameters.
+   *
+   * @param url           URL of the resource
+   * @param header        Map of headers to include in the request
+   * @param content       InputStream content to send with the request
+   * @param contentLength Length of the content
+   * @param httpMethod    HTTP method to use (GET, POST, etc.)
+   * @return HttpRequestBase object representing the HTTP request
+   * @throws Exception if an error occurs during access
+   */
+  public abstract HttpRequestBase access(String url, Map<String, String> header, InputStream content, Long contentLength,
+      HttpMethodName httpMethod) throws Exception;
 
-   public abstract HttpRequestBase access(String var1, Map<String, String> var2, String var3, HttpMethodName var4) throws Exception;
+  /**
+   * Abstract method to access a resource with the specified parameters.
+   *
+   * @param url           URL of the resource
+   * @param header        Map of headers to include in the request
+   * @param content       InputStream content to send with the request   
+   * @param httpMethod    HTTP method to use (GET, POST, etc.)
+   * @throws Exception if an error occurs during access
+   */
+  public abstract HttpRequestBase access(String url, Map<String, String> header, String content, HttpMethodName httpMethod)
+      throws Exception;
 
-   public HttpRequestBase access(String url, Map<String, String> header, HttpMethodName httpMethod) throws Exception {
-      return this.access(url, header, (InputStream)null, 0L, httpMethod);
-   }
+  /**
+   * Access a resource with the specified URL, headers, and HTTP method.
+   *
+   * @param url        URL of the resource
+   * @param header     Map of headers to include in the request
+   * @param httpMethod HTTP method to use (GET, POST, etc.)
+   * @return HttpRequestBase object representing the HTTP request
+   * @throws Exception if an error occurs during access
+   */
+  public HttpRequestBase access(String url, Map<String, String> header, HttpMethodName httpMethod) throws Exception {
+    return this.access(url, header, (InputStream) null, 0L, httpMethod);
+  }
 
-   public HttpRequestBase access(String url, InputStream content, Long contentLength, HttpMethodName httpMethod) throws Exception {
-      return this.access(url, (Map)null, content, contentLength, httpMethod);
-   }
+  /**
+   * Access a resource with the specified URL, content, content length, and HTTP
+   * method.
+   *
+   * @param url           URL of the resource
+   * @param content       InputStream content to send with the request
+   * @param contentLength Length of the content
+   * @param httpMethod    HTTP method to use (GET, POST, etc.)
+   * @return HttpRequestBase object representing the HTTP request
+   * @throws Exception if an error occurs during access
+   */
+  public HttpRequestBase access(String url, InputStream content, Long contentLength, HttpMethodName httpMethod)
+      throws Exception {
+    return this.access(url, (Map<String, String>) null, content, contentLength, httpMethod);
+  }
 
-   public HttpRequestBase access(String url, HttpMethodName httpMethod) throws Exception {
-      return this.access(url, (Map)null, (InputStream)null, 0L, httpMethod);
-   }
+  /**
+   * Access a resource with the specified URL and HTTP method.
+   *
+   * @param url        URL of the resource
+   * @param httpMethod HTTP method to use (GET, POST, etc.)
+   * @return HttpRequestBase object representing the HTTP request
+   * @throws Exception if an error occurs during access
+   */
+  public HttpRequestBase access(String url, HttpMethodName httpMethod) throws Exception {
+    return this.access(url, (Map<String, String>) null, (InputStream) null, 0L, httpMethod);
+  }
 
-   public String getAk() {
-      return this.ak;
-   }
+  /**
+   * Get the access key.
+   *
+   * @return Access Key
+   */
+  public String getAk() {
+    return this.ak;
+  }
 
-   public void setAk(String ak) {
-      this.ak = ak;
-   }
+  /**
+   * Set the access key.
+   *
+   * @param ak Access Key
+   */
+  public void setAk(String ak) {
+    this.ak = ak;
+  }
 
-   public String getSk() {
-      return this.sk;
-   }
+  /**
+   * Get the secret key.
+   *
+   * @return Secret Key
+   */
+  public String getSk() {
+    return this.sk;
+  }
 
-   public void setSk(String sk) {
-      this.sk = sk;
-   }
+  /**
+   * Set the secret key.
+   *
+   * @param sk Secret Key
+   */
+  public void setSk(String sk) {
+    this.sk = sk;
+  }
 }

@@ -14,6 +14,12 @@ import com.otc.sdk.core.util.SSLCipherSuiteUtil;
 import com.otc.sdk.service.Client;
 import com.otc.sdk.service.Request;
 
+/**
+ * HttpClientDemo class demonstrates how to use the OTC SDK to make HTTP requests
+ * with authentication.
+ * It shows how to create a request, sign it, and execute it using an HTTP client.
+ * The response body is printed to the console.
+ */
 public class HttpClientDemo {
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientDemo.class);
 

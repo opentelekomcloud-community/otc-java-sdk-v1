@@ -17,24 +17,38 @@ package com.otc.sdk.core.util;
 
 import java.util.Locale;
 
+/**
+ * Utility class for binary operations, specifically for converting byte arrays
+ * to hexadecimal strings.
+ * This class provides a method to convert a byte array into a hexadecimal
+ * string representation.
+ */
 public class BinaryUtils {
-   public static String toHex(byte[] data) {
-      StringBuffer sbuff = new StringBuffer(data.length * 2);
-      byte[] var2 = data;
-      int var3 = data.length;
 
-      for(int var4 = 0; var4 < var3; ++var4) {
-         byte bye = var2[var4];
-         String hexStr = Integer.toHexString(bye);
-         if (hexStr.length() == 1) {
-            sbuff.append("0");
-         } else if (hexStr.length() == 8) {
-            hexStr = hexStr.substring(6);
-         }
+  /**
+   * Converts a byte array to a hexadecimal string.
+   * Each byte is represented by two hexadecimal characters.
+   *
+   * @param data The byte array to convert
+   * @return A string representing the hexadecimal values of the byte array
+   */
+  public static String toHex(byte[] data) {
+    StringBuffer sbuff = new StringBuffer(data.length * 2);
+    byte[] var2 = data;
+    int var3 = data.length;
 
-         sbuff.append(hexStr);
+    for (int var4 = 0; var4 < var3; ++var4) {
+      byte bye = var2[var4];
+      String hexStr = Integer.toHexString(bye);
+      if (hexStr.length() == 1) {
+        sbuff.append("0");
+      } else if (hexStr.length() == 8) {
+        hexStr = hexStr.substring(6);
       }
 
-      return sbuff.toString().toLowerCase(Locale.getDefault());
-   }
+      sbuff.append(hexStr);
+    }
+
+    return sbuff.toString().toLowerCase(Locale.getDefault());
+  }
 }

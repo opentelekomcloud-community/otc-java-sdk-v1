@@ -20,41 +20,87 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * SignResult class represents the result of a signing operation.
+ * It contains headers, URL, parameters, and an input stream associated with the
+ * signed request.
+ */
 public class SignResult {
-   private Map<String, String> headers = new HashMap<>();
-   private URL url;
-   private Map<String, String> parameters = new HashMap<>();
-   private InputStream inputStream;
+  private Map<String, String> headers = new HashMap<>();
+  private URL url;
+  private Map<String, String> parameters = new HashMap<>();
+  private InputStream inputStream;
 
-   public Map<String, String> getHeaders() {
-      return this.headers;
-   }
+  /**
+   * Gets the headers of the signed request.
+   *
+   * @return The headers of the signed request
+   */
+  public Map<String, String> getHeaders() {
+    return this.headers;
+  }
 
-   public void setHeaders(Map<String, String> headers) {
-      this.headers = headers;
-   }
+  /**
+   * Sets the headers for the signed request.
+   *
+   * @param headers The headers to set
+   */
+  public void setHeaders(Map<String, String> headers) {
+    this.headers = headers;
+  }
 
-   public URL getUrl() {
-      return this.url;
-   }
+  /**
+   * Gets the URL of the signed request.
+   *
+   * @return The URL of the signed request
+   */
+  public URL getUrl() {
+    return this.url;
+  }
 
-   public void setUrl(URL url) {
-      this.url = url;
-   }
+  /**
+   * Sets the URL for the signed request.
+   *
+   * @param url The URL to set
+   */
+  public void setUrl(URL url) {
+    this.url = url;
+  }
 
-   public Map<String, String> getParameters() {
-      return this.parameters;
-   }
+  /**
+   * Gets the parameters of the signed request.
+   *
+   * @return The parameters of the signed request
+   */
+  public Map<String, String> getParameters() {
+    return this.parameters;
+  }
 
-   public void setParameters(Map<String, String> parameters) {
-      this.parameters = parameters;
-   }
+  /**
+   * Sets the parameters for the signed request.
+   *
+   * @param parameters The parameters to set
+   */
+  public void setParameters(Map<String, String> parameters) {
+    this.parameters = parameters;
+  }
 
-   public InputStream getInputStream() {
-      return this.inputStream;
-   }
+  /**
+   * Gets the input stream associated with the signed request.
+   *
+   * @return The input stream of the signed request
+   */
+  public InputStream getInputStream() {
+    return this.inputStream;
+  }
 
-   public void setInputStream(InputStream inputStream) {
-      this.inputStream = inputStream;
-   }
+  /**
+   * Sets the input stream for the signed request.
+   *
+   * @param inputStream The input stream to set
+   */
+  public void setInputStream(InputStream inputStream) {
+    this.inputStream = inputStream;
+  }
+
 }
