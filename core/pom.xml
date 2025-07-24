@@ -5,38 +5,32 @@
 
   <parent>
     <groupId>io.github.opentelekomcloud-community</groupId>
-    <artifactId>otc-sdk-v1</artifactId>
+    <artifactId>otc-sdk-v1-pom</artifactId>
     <version>1.0.0</version>
   </parent>
 
+  <groupId>io.github.opentelekomcloud-community</groupId>
   <artifactId>otc-sdk-v1-core</artifactId>
-
-  <name>OTC SDK for Java Core</name>
-  <description>Core library for OTC Java SDK</description>
-
   <packaging>jar</packaging>
 
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>Core library for OTC Java SDK</description>
+  <url>https://github.com/opentelekomcloud-community/otc-java-sdk-v1</url>
+
+  <scm>
+    <connection>scm:git:git://github.com/opentelekomcloud-community/otc-java-sdk-v1.git</connection>
+    <developerConnection>scm:git:ssh://github.com:opentelekomcloud-community/otc-java-sdk-v1.git</developerConnection>
+    <url>http://github.com/opentelekomcloud-community/otc-java-sdk-v1/tree/main</url>
+  </scm>
+
   <properties>
-
-    <!-- <bgmprovider.version>1.0.4</bgmprovider.version> -->
     <bgmprovider.version>2.0.0</bgmprovider.version>
-
-    <!-- <commons-codec.version>1.16.0</commons-codec.version> -->
     <commons-codec.version>1.18.0</commons-codec.version>
-
-    <!-- <commons-logging.version>1.2</commons-logging.version> -->
     <commons-logging.version>1.3.5</commons-logging.version>
-
     <httpclient.version>4.5.14</httpclient.version>
-
-    <!-- <httpcore.version>4.4.13</httpcore.version> -->
     <httpcore.version>4.4.16</httpcore.version>
-
     <okhttp.version>4.11.0</okhttp.version>
-
-    <!-- <okio.version>3.5.0</okio.version> -->
-     <okio.version>3.15.0</okio.version>
-
+    <okio.version>3.15.0</okio.version>
   </properties>
 
   <dependencies>

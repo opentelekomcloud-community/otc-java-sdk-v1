@@ -6,20 +6,23 @@
 
   <parent>
     <groupId>io.github.opentelekomcloud-community</groupId>
-    <artifactId>otc-sdk-v1</artifactId>
+    <artifactId>otc-sdk-v1-pom</artifactId>
     <version>1.0.0</version>
   </parent>
 
+  <groupId>io.github.opentelekomcloud-community</groupId>
   <artifactId>otc-sdk-v1-samples</artifactId>
-
-  <name>OTC SDK for Java Samples</name>
-  <description>Samples for OTC SDK for Java</description>
-
   <packaging>pom</packaging>
 
-  <properties>
-    <com.google.code.gson.version>2.12.0</com.google.code.gson.version>
-  </properties>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>Samples for OTC SDK for Java</description>
+  <url>https://github.com/opentelekomcloud-community/otc-java-sdk-v1</url>
+
+  <scm>
+    <connection>scm:git:git://github.com/opentelekomcloud-community/otc-java-sdk-v1.git</connection>
+    <developerConnection>scm:git:ssh://github.com:opentelekomcloud-community/otc-java-sdk-v1.git</developerConnection>
+    <url>http://github.com/opentelekomcloud-community/otc-java-sdk-v1/tree/main</url>
+  </scm>
 
   <dependencies>
     <dependency>
@@ -40,23 +43,5 @@
       <version>${slf4j.version}</version>
     </dependency>
   </dependencies>
-
-  <build>
-    
-    <pluginManagement>
-      <plugins>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
-  </build>
-
 
 </project>

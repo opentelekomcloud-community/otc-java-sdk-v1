@@ -1,0 +1,62 @@
+name: Verify java
+
+on:
+  # push:
+  #   branches: [ "main" ]
+
+  pull_request:
+
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+        cache: 'maven'
+        server-id: central
+        server-username: ${{ secrets.OSSRH_USERNAME }}
+        server-password: ${{ secrets.OSSRH_PASSWORD }}
+        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+        gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+
+    - name: Dry run deployment
+      run: | 
+        mvn deploy \
+            --batch-mode \
+            --settings .github/settings.xml \
+            -DdryRun=true \
+            -DskipSonaTypePublishing=true \
+            -DskipTests \
+            -P gpg-signing,cimodules,dev,release,sonatypeDeploy 
+
+      env:
+        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+
+    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    # - name: Update dependency graph
+    #   uses: advanced-security/maven-dependency-submission-action@v5
+    #   if: github.ref == 'refs/heads/main'
+
+  check:
+    name: check
+    if: >
+      always()
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

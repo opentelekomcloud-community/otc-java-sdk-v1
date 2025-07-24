@@ -5,14 +5,26 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.github.opentelekomcloud-community</groupId>
-  <artifactId>otc-sdk-v1</artifactId>
+  <artifactId>otc-sdk-v1-pom</artifactId>
   <version>1.0.0</version>
+  <packaging>pom</packaging>
 
-  <name>OTC SDK for Java Parent</name>
+  <name>${project.groupId}:${project.artifactId}</name>
   <description>OTC SDK for Java</description>
   <url>https://github.com/opentelekomcloud-community/otc-java-sdk-v1</url>
 
-  <packaging>pom</packaging>
+  <developers>
+    <developer>
+      <id>opentelekomcloudcommunity</id>
+      <name>Open Telekom Cloud Community</name>
+      <organization>Open Telekom Cloud Community</organization>
+      <organizationUrl>https://github.com/opentelekomcloud-community</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+  </developers>
 
   <licenses>
     <license>
@@ -22,32 +34,33 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:${project.scm.url}</connection>
-    <developerConnection>scm:git:g${project.scm.url}</developerConnection>
-    <url>git@github.com/opentelekomcloud-community/otc-java-sdk-v1.git</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:git://github.com/opentelekomcloud-community/otc-java-sdk-v1.git</connection>
+    <developerConnection>scm:git:ssh://github.com:opentelekomcloud-community/otc-java-sdk-v1.git</developerConnection>
+    <url>http://github.com/opentelekomcloud-community/otc-java-sdk-v1/tree/main</url>
   </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
 
-    <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
-    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-    <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
-    <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
-    <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
-    <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
-    <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
-    <maven-project-info-reports-plugin.version>3.6.1</maven-project-info-reports-plugin.version>
-
-    <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+    <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
+    <lombok.version>1.18.30</lombok.version>
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-
+    <maven-clean-plugin.version>3.4.0</maven-clean-plugin.version>
+    <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+    <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
+    <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+    <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
+    <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
+    <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
     <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
-
+    <maven-project-info-reports-plugin.version>3.6.1</maven-project-info-reports-plugin.version>
+    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+    <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+    <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+    <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
+    <maven.compiler.release>17</maven.compiler.release>
     <slf4j.version>2.0.16</slf4j.version>
+    <com.google.code.gson.version>2.12.0</com.google.code.gson.version>
 
   </properties>
 
@@ -102,8 +115,284 @@
     </pluginManagement>
   </build>
 
-  <modules>
-    <module>core</module>
-    <module>samples</module>
-  </modules>
+  <profiles>
+
+    <profile>
+      <id>allmdoules</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <modules>
+        <module>core</module>
+        <module>samples</module>
+      </modules>
+
+    </profile>
+
+    <profile>
+      <!-- only modules named here will be published maven central -->
+      <id>cimodules</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+
+      <modules>
+        <module>core</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+
+          <plugin>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${maven-source-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${maven-javadoc-plugin.version}</version>
+            <configuration>
+              <doclint>all,-missing</doclint>
+              <!-- <doclint>none</doclint> -->
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+
+      </build>
+    </profile>
+
+    <profile>
+      <id>release</id>
+      <build>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be
+          moved to
+      parent pom) -->
+          <plugins>
+            <!-- clean lifecycle, see
+        https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+            <plugin>
+              <artifactId>maven-clean-plugin</artifactId>
+              <version>${maven-clean-plugin.version}</version>
+            </plugin>
+            <!-- default lifecycle, jar packaging: see
+            https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+            <plugin>
+              <artifactId>maven-resources-plugin</artifactId>
+              <version>${maven-resources-plugin.version}</version>
+              <configuration>
+                <encoding>UTF-8</encoding>
+              </configuration>
+            </plugin>
+
+            <plugin>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>${maven-compiler-plugin.version}</version>
+              <configuration>
+                <annotationProcessorPaths>
+                  <path>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                    <version>${lombok.version}</version>
+                  </path>
+                </annotationProcessorPaths>
+                <encoding>UTF-8</encoding>
+              </configuration>
+            </plugin>
+            <plugin>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+              <artifactId>maven-jar-plugin</artifactId>
+              <version>${maven-jar-plugin.version}</version>
+            </plugin>
+            <plugin>
+              <artifactId>maven-install-plugin</artifactId>
+              <version>${maven-install-plugin.version}</version>
+            </plugin>
+            <plugin>
+              <artifactId>maven-deploy-plugin</artifactId>
+              <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <!-- site lifecycle, see
+        https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+            <plugin>
+              <artifactId>maven-site-plugin</artifactId>
+              <version>${maven-site-plugin.version}</version>
+            </plugin>
+            <plugin>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>${maven-project-info-reports-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+              <artifactId>maven-source-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>attach-sources</id>
+                  <goals>
+                    <goal>jar-no-fork</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>${maven-javadoc-plugin.version}</version>
+              <configuration>
+                <doclint>all,-missing</doclint>
+
+              </configuration>
+              <executions>
+                <execution>
+                  <id>attach-javadocs</id>
+                  <goals>
+                    <goal>jar</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+
+
+            <plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <configuration>
+                <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <!-- <archive>
+                  <manifest>
+
+                  </manifest>
+                </archive> -->
+                <finalName>${project.name}</finalName>
+              </configuration>
+              <executions>
+                <execution>
+                  <id>make-assembly</id>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>single</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-gpg-plugin</artifactId>
+              <version>${maven-gpg-plugin.version}</version>
+              <executions>
+                <execution>
+                  <id>sign-artifacts</id>
+                  <phase>verify</phase>
+                  <goals>
+                    <goal>sign</goal>
+                  </goals>
+                  <configuration>
+                    <!-- This is required to make sure the plugin does not stop asking for -->
+                    <!-- user input on the passphrase -->
+                    <gpgArguments>
+                      <arg>--pinentry-mode</arg>
+                      <arg>loopback</arg>
+                    </gpgArguments>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>${maven-release-plugin.version}</version>
+              <configuration>
+                <tagNameFormat>v@{project.version}</tagNameFormat>
+              </configuration>
+            </plugin>
+
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>sonatypeDeploy</id>
+
+      <properties>
+        <skipSonaTypePublishing>false</skipSonaTypePublishing>
+      </properties>
+
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>${central-publishing-maven-plugin.version}</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+
+              <skipPublishing>${skipSonaTypePublishing}</skipPublishing>
+              <ignorePublishedComponents>true</ignorePublishedComponents>
+              <autoPublish>true</autoPublish>
+              <waitUntil>published</waitUntil>
+
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven-gpg-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+
+    </profile>
+  </profiles>
+
+
 </project>
