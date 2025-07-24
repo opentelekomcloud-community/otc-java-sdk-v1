@@ -28,7 +28,11 @@ jobs:
           distribution: "temurin"
           java-version: "21"
           cache: "maven"
-          server-id: github
+          server-id: central
+          server-username: ${{ secrets.OSSRH_USERNAME }}
+          server-password: ${{ secrets.OSSRH_PASSWORD }}
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: setup python
         uses: actions/setup-python@v5
@@ -57,30 +61,19 @@ jobs:
       - name: print-pom-version    
         run: echo "JAVA_POM_VERSION=${{ steps.pom-version.outputs.JAVA_POM_VERSION }}"
 
-      - name: check-package-exist
-        id: check_package_exist
-        run: python3 .github/scripts/existsGitHubPackageVersion.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ${{ github.repository_owner }}
-          PACKAGE_TYPE: maven
-          PACKAGE_NAME: com.opentelekomcloud.opentelekomcloud-functiongraph-java
-          PACKAGE_VERSION_NAME: ${{ steps.pom-version.outputs.JAVA_POM_VERSION }}
-          OUTPUT_NAME: PACKAGE_EXISTS
-
-      - name: echo-if-package-exists
-        if: "${{ steps.check_package_exist.outputs.PACKAGE_EXISTS == 'true' }}"
-        run: echo "::notice::Package exsits, skipping upload."
-
-      - name: deploy-package-to-github
-        if: "${{ steps.check_package_exist.outputs.PACKAGE_EXISTS != 'true' }}"
+      - name: Maven deploy        
         id: deploy_github
         run: |
-          echo "::notice::Uploading Package ..."
-          mvn -B deploy --file pom.xml \
-            -DaltDeploymentRepository="github::https://maven.pkg.github.com/${{ github.repository }}"
+          mvn deploy \
+            --batch-mode \
+            --settings .github/settings.xml \
+            -DskipTests \
+            -P gpg-signing,cimodules,dev,release,sonatypeDeploy
+            
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 
       - name: Create Release
       # https://github.com/ncipollo/release-action/blob/main/.github/workflows/release.yml

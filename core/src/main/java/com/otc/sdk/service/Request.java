@@ -141,7 +141,12 @@ public class Request {
     }
   }
 
-  
+  /**
+   * Sets the app key for the request.
+   *
+   * @param appKey The app key to set
+   * @throws EmptyStringException if the appSecret is empty
+   */
   public void setKey(String appKey) throws EmptyStringException {
     if (null != appKey && !appKey.trim().isEmpty()) {
       this.key = appKey;
@@ -183,7 +188,12 @@ public class Request {
     }
   }
 
-  
+  /**
+   * Gets the URL for the request.
+   * 
+   * @return The url
+   * @throws UnsupportedEncodingException if the URL encoding fails
+   */
   public String getUrl() throws UnsupportedEncodingException {
     StringBuilder uri = new StringBuilder();
     uri.append(this.url);
