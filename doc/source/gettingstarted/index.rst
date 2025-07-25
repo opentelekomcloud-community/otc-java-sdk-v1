@@ -28,70 +28,24 @@ These libraries are available through:
         # run maven clean install
         mvn clean install
 
-  .. tab:: GitHub and Maven
-
-    To use GitHub maven repository modify your ``settings.xml`` (e.g. ~/.m2/settings.xml) as follows.
-
-    If you need to use a proxy for internet connections, see `Configuring a proxy <https://maven.apache.org/guides/mini/guide-proxies.html>`_.
-
-    The environment variable ``GITHUB_TOKEN`` has to be set with your `GitHub personal access token <https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#authenticating-with-a-personal-access-token>`_,
-    e.g. in your ``~/.profile``.
-
-     Detailed instructions can be found `Working with the Apache Maven registry: Installing a package <https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry#installing-a-package>`_
-
-     .. code-block:: xml
-        :caption: settings.xml
-
-        <servers>
-          <server>
-            <id>github.opentelekomcloud-community</id>
-            <configuration>
-              <httpHeaders>
-                <property>
-                  <name>Authorization</name>
-                  <value>Bearer ${env.GITHUB_TOKEN}</value>
-                </property>
-              </httpHeaders>
-            </configuration>
-        </servers>
-
-        <profiles>
-          <profile>
-            <id>default</id>
-
-            <repositories>
-              <repository>
-                <id>central</id>
-                <url>https://repo1.maven.org/maven2</url>
-              </repository>
-
-              <repository>
-                <id>github.opentelekomcloud-community</id>
-                <url>https://maven.pkg.github.com/opentelekomcloud-community/otc-java-sdk-v1</url>
-
-                <releases>
-                  <enabled>true</enabled>
-                  <updatePolicy>daily</updatePolicy>
-                </releases>
-
-                <snapshots>
-                  <enabled>true</enabled>
-                  <updatePolicy>always</updatePolicy>
-                </snapshots>
-
-              </repository>
-            </repositories>
-          </profile>
-        </profiles>
-
-        <activeProfiles>
-          <activeProfile>default</activeProfile>
-        </activeProfiles>
-
 
   .. tab:: Maven Central
 
-     Comming soon ...
+     Add following dependencies to your pom:
+
+     .. code-block:: xml
+        :substitutions:
+
+         <dependencies>
+         ...
+          <dependency>
+            <groupId>io.github.opentelekomcloud-community</groupId>
+            <artifactId>otc-sdk-v1-core</artifactId>
+            <version>|pom_version|</version>
+          </dependency>
+        ...
+        </dependencies>
+
 
 
 API Usage
