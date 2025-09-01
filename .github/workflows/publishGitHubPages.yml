@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  publish_sphinx_docs:
+  build:
     runs-on: ubuntu-latest
     
     steps:
