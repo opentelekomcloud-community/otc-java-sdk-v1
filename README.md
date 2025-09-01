@@ -7,6 +7,8 @@ It provides functionalities for *Access Key* and *Secret Access Key* (AK/SK) req
 
 ## Documentation
 
+For documentation see: [otc-java-sdk-v1](https://opentelekomcloud-community.github.io/otc-java-sdk-v1/)
+
 >[!NOTE] 
 > To run documentation locally:  
 > 

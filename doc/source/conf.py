@@ -163,7 +163,7 @@ html_theme = 'otcdocs'
 # further. For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    "show_other_versions": "True",
+    "show_other_versions": "False",
     "logo_url": "https://docs.otc.t-systems.com",
 }
 

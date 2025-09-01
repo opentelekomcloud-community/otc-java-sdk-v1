@@ -1,10 +1,10 @@
 OTC Java SDK v1 documentation
 =============================
 
-The `OTC Java SDK v1` provides functionality to use 
+The `OTC Java SDK v1` provides functionality to use the
 OpenTelekomCloud API in Java.
 
-Escpecially methods for signing requests using AK/SK
+Especially methods for signing requests using AK/SK
 
 .. toctree::
    :includehidden:
