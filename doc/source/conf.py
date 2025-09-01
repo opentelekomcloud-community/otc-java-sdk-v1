@@ -30,6 +30,7 @@ extensions = [
      'sphinx_design',
      'sphinx_substitution_extensions',
      'sphinx.ext.extlinks',
+     "sphinx.ext.githubpages",
 
 ]
 
