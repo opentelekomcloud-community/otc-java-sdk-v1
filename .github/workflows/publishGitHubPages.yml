@@ -58,7 +58,7 @@ jobs:
             GH_ACTIONS_GIT_COMMIT_HASH: ${{ github.sha }}
 
         run: |
-          sphinx-build -W --keep-going -b html doc/source/ ${{ steps.pages.outputs.base_path }}
+          sphinx-build -W --keep-going -b html doc/source/ ./_site
 
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
