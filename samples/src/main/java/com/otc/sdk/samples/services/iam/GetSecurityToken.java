@@ -66,11 +66,11 @@ public class GetSecurityToken {
         LOGGER.info(jsonString);
         JsonObject obj = JsonParser.parseString(jsonString).getAsJsonObject();
 
-        JsonObject credetial = obj.get("credential").getAsJsonObject();
+        JsonObject credential = obj.get("credential").getAsJsonObject();
 
-        String sak = credetial.get("access").getAsString();
-        String ssk = credetial.get("secret").getAsString();
-        String stoken = credetial.get("securitytoken").getAsString();
+        String sak = credential.get("access").getAsString();
+        String ssk = credential.get("secret").getAsString();
+        String stoken = credential.get("securitytoken").getAsString();
 
         LOGGER.info("SecurityAccessKey: " + sak);
         LOGGER.info("SecuritySecretKey: " + ssk);
