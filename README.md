@@ -22,6 +22,10 @@ For documentation see: [otc-java-sdk-v1](https://opentelekomcloud-community.gith
 > Open documentation in browser: <http://127.0.0.1:8889>
 
 
+## References
+
+Code is an OTC adapted version of [java-sdk-core-3.2.6.jar](https://obs.cn-north-1.myhuaweicloud.com/apig-sdk/ApiGateway-java-sdk.zip) included in folder  ApiGateway-java-sdk-3.2.6/libs/.
+
 ## Warranty Disclaimer
 
 THE OPEN SOURCE SOFTWARE IN THIS PRODUCT IS DISTRIBUTED IN THE HOPE THAT IT

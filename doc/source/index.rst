@@ -1,10 +1,11 @@
 OTC Java SDK v1 documentation
 =============================
 
-The `OTC Java SDK v1` provides functionality to use the
-OpenTelekomCloud API in Java.
+This is the community version of OTC Java SDK v1.
 
-Especially methods for signing requests using AK/SK
+The `OTC Java SDK v1` provides functionality 
+for *Access Key* and *Secret Access Key* (AK/SK) request signing 
+used in OpenTelekomCloud API calls
 
 .. toctree::
    :includehidden:
@@ -18,6 +19,13 @@ Source Code
 -----------
 
 For source code, see :github_repo_master:`OTC Java SDK v1 on Github <>`.
+
+References
+----------
+
+Code is an OTC adapted version of
+`java-sdk-core-3.2.6.jar <https://obs.cn-north-1.myhuaweicloud.com/apig-sdk/ApiGateway-java-sdk.zip>`_
+included in folder *ApiGateway-java-sdk-3.2.6/libs/*.
 
 Disclaimer
 ----------

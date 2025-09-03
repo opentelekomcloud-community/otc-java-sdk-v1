@@ -51,12 +51,13 @@ public class HttpClientListVPC {
       String ak = System.getenv("OTC_SDK_AK");
       String sk = System.getenv("OTC_SDK_SK");
       String projectId = System.getenv("OTC_SDK_PROJECTID");
+      String region = System.getenv("OTC_SDK_REGION");
 
       httpClientRequest.setKey(ak);
       httpClientRequest.setSecret(sk);
       httpClientRequest.setMethod(HttpMethodName.GET.toString());
 
-      String url = String.format("https://vpc.eu-de.otc.t-systems.com/v1/%s/vpcs", projectId);
+      String url = String.format("https://vpc.%s.otc.t-systems.com/v1/%s/vpcs", region, projectId);
 
       httpClientRequest.setUrl(url);
       httpClientRequest.addHeader("Content-type", "application/json;charset=utf8");

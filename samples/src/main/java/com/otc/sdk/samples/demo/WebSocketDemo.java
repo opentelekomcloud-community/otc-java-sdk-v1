@@ -49,11 +49,11 @@ public class WebSocketDemo {
       okhttp3.Request signedRequest = Client.signOkhttp(webSocketRequest, Constant.SIGNATURE_ALGORITHM_SDK_HMAC_SHA256);
       OkHttpClient webSocketClient;
       if (Constant.DO_VERIFY) {
-        // creat okhttpClient and verify ssl certificate
+        // create okhttpClient and verify ssl certificate
         HostName.setUrlHostName(webSocketRequest.getHost());
         webSocketClient = SSLCipherSuiteUtil.createOkHttpClientWithVerify(Constant.INTERNATIONAL_PROTOCOL);
       } else {
-        // creat okhttpClient and do not verify ssl certificate
+        // create okhttpClient and do not verify ssl certificate
         webSocketClient = SSLCipherSuiteUtil.createOkHttpClient(Constant.INTERNATIONAL_PROTOCOL);
       }
       WebSocketListener webSocketListener = new WebSocketListener() {

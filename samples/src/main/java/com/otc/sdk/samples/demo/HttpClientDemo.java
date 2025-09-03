@@ -51,11 +51,11 @@ public class HttpClientDemo {
       // Sign the request.
       HttpRequestBase signedRequest = Client.sign(httpClientRequest, Constant.SIGNATURE_ALGORITHM_SDK_HMAC_SHA256);
       if (Constant.DO_VERIFY) {
-        // creat httpClient and verify ssl certificate
+        // create httpClient and verify ssl certificate
         HostName.setUrlHostName(httpClientRequest.getHost());
         client = (CloseableHttpClient) SSLCipherSuiteUtil.createHttpClientWithVerify(Constant.INTERNATIONAL_PROTOCOL);
       } else {
-        // creat httpClient and do not verify ssl certificate
+        // create httpClient and do not verify ssl certificate
         client = (CloseableHttpClient) SSLCipherSuiteUtil.createHttpClient(Constant.INTERNATIONAL_PROTOCOL);
       }
       HttpResponse response = client.execute(signedRequest);

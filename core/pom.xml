@@ -42,7 +42,7 @@
       <scope>compile</scope>
     </dependency>
 
-    <!-- if this dependency is added, additional log entries will apear in log output -->
+    <!-- if this dependency is added, additional log entries will appear in log output -->
     <!-- 
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -46,11 +46,13 @@ public class OkHttpListFG {
       String ak = System.getenv("OTC_SDK_AK");
       String sk = System.getenv("OTC_SDK_SK");
       String projectId = System.getenv("OTC_SDK_PROJECTID");
+      String region = System.getenv("OTC_SDK_REGION");
+
       OkHttpRequest.setKey(ak);
       OkHttpRequest.setSecret(sk);
       OkHttpRequest.setMethod(HttpMethodName.GET.toString());
 
-      String url = String.format("https://functiongraph.eu-de.otc.t-systems.com/v2/%s/fgs/functions", projectId);
+      String url = String.format("https://functiongraph.%s.otc.t-systems.com/v2/%s/fgs/functions", region, projectId);
       OkHttpRequest.setUrl(url);
 
       OkHttpRequest.addHeader("Content-type", "application/json;charset=utf8");
