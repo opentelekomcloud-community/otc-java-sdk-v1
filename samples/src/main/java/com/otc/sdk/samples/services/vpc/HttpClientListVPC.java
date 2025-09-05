@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.otc.sdk.samples.services.vpv;
+package com.otc.sdk.samples.services.vpc;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
