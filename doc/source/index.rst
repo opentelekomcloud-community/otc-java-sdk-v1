@@ -20,13 +20,6 @@ Source Code
 
 For source code, see :github_repo_master:`OTC Java SDK v1 on Github <>`.
 
-References
-----------
-
-Code is an OTC adapted version of
-`java-sdk-core-3.2.6.jar <https://obs.cn-north-1.myhuaweicloud.com/apig-sdk/ApiGateway-java-sdk.zip>`_
-included in folder *ApiGateway-java-sdk-3.2.6/libs/*.
-
 Disclaimer
 ----------
 
