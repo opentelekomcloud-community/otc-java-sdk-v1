@@ -255,3 +255,5 @@ extlinks_detect_hardcoded_links = True
 copybutton_selector = "div.copy-button pre"
 # do not copy line numbers and prompt character
 copybutton_exclude = '.linenos, .gp'
+
+linkcheck_anchors = False
