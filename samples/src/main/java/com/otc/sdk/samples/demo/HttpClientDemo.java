@@ -63,7 +63,7 @@ public class HttpClientDemo {
       HttpEntity resEntity = response.getEntity();
       if (resEntity != null) {
         LOGGER.info("Processing Body with name: {} and value: {}", System.getProperty("Line.separator"),
-            EntityUtils.toString(resEntity, "Utf 8"));
+            EntityUtils.toString(resEntity, java.nio.charset.StandardCharsets.UTF_8));
       }
     } catch (Exception e) {
       LOGGER.error(e.getMessage());
